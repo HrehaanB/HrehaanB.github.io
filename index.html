@@ -4,34 +4,143 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BoomBot — Music × Robotics × Service</title>
-  <meta name="description" content="BoomBot is an educational, percussive robot that introduces kids to the creative intersection of music and robotics." />
-
-  <!-- Google Fonts -->
+  <meta name="description" content="BoomBot is an educational, percussive robot that uses Boomwhackers to introduce kids to the creative intersection of music and robotics." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10; /* deep charcoal */
+      --panel:#11131a;
+      --ink:#e6e8ee; /* soft white */
+      --muted:#aab2c0;
+      --accent:#ffd166; /* warm gold */
+      /* Boomwhacker-inspired palette */
+      --r:#ef476f; --o:#f78c6b; --y:#ffd166; --g:#06d6a0; --b:#118ab2; --v:#8338ec;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --maxw: 1150px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; scroll-behavior:smooth}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto; display:block}
+    .container{width:min(100% - 2rem, var(--maxw)); margin-inline:auto}
 
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="style.css" />
+    /* Top nav */
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(120%) blur(8px); background:rgba(11,12,16,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .navwrap{display:flex; align-items:center; justify-content:space-between; padding:1rem 0}
+    .brand{display:flex; align-items:center; gap:.8rem}
+    .logo{
+      width:42px;height:42px; border-radius:12px; background:linear-gradient(135deg,var(--r),var(--y),var(--g),var(--b),var(--v));
+      box-shadow:0 6px 18px rgba(0,0,0,.35); position:relative; overflow:hidden
+    }
+    .brand h1{font:900 1.15rem/1 Nunito, Inter, sans-serif; letter-spacing:.3px}
+    nav ul{display:flex; gap:1.2rem; list-style:none; margin:0; padding:0}
+    nav a{padding:.55rem .8rem; border-radius:999px; color:var(--muted)}
+    nav a:hover, nav a:focus{background:rgba(255,255,255,.07); color:var(--ink)}
+    .cta{display:flex; gap:.75rem}
+    .btn{--bgc:var(--b); --inkc:#08131c; display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1rem; border-radius:999px; font-weight:700; background:var(--bgc); color:var(--inkc); box-shadow:var(--shadow); border:0; cursor:pointer}
+    .btn.alt{--bgc:transparent; --inkc:var(--ink); border:1px solid rgba(255,255,255,.15)}
+
+    /* Hero */
+    .hero{position:relative; isolation:isolate; overflow:hidden}
+    .hero .bg{
+      position:absolute; inset:0; z-index:-2; background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(17, 136, 178, .18), transparent 60%),
+        radial-gradient(1200px 700px at 90% 30%, rgba(6, 214, 160, .18), transparent 60%),
+        radial-gradient(1200px 700px at 50% 100%, rgba(239, 71, 111, .16), transparent 60%),
+        linear-gradient(180deg, #0b0c10, #0f1320 60%, #0b0c10);
+    }
+    .hero .container{display:grid; grid-template-columns:1.15fr .85fr; gap:2rem; align-items:center; padding:4.5rem 0 2.5rem}
+    .hero h2{font:900 clamp(2rem, 6vw, 3.4rem)/1.05 Nunito, Inter, sans-serif; margin:.5rem 0 1rem; letter-spacing:.2px}
+    .hero p{font-size:clamp(1rem, 2.2vw, 1.15rem); color:var(--muted)}
+    .hero .actions{display:flex; gap:1rem; margin-top:1.3rem}
+    .tagline{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:var(--accent); font-weight:700; background:rgba(17,19,26,.7)}
+    .hero-media{position:relative}
+    .frame{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); outline:1px solid rgba(255,255,255,.08)}
+    .caption{font-size:.9rem; color:var(--muted); margin-top:.7rem}
+
+    /* Section shell */
+    section{padding:4.5rem 0; position:relative}
+    section .lede{max-width:820px}
+    h3{font:800 clamp(1.4rem,2.8vw,2.1rem)/1.1 Nunito, Inter, sans-serif; margin:0 0 .6rem}
+    p{line-height:1.65}
+    .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem}
+    .card{background:var(--panel); border-radius:var(--radius); padding:1.1rem; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.06)}
+    .card h4{margin:.2rem 0 .35rem; font-size:1.12rem}
+    .tagbar{height:8px; border-radius:8px; background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--v)); margin-bottom:.7rem}
+
+    /* Stats */
+    .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.3rem}
+    .stat{padding:1.1rem; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06); text-align:center}
+    .stat b{display:block; font:900 2rem/1 Nunito, Inter, sans-serif}
+    .stat span{color:var(--muted)}
+
+    /* Timeline */
+    .timeline{position:relative; margin-top:2rem}
+    .timeline::before{content:""; position:absolute; left:clamp(10px, 3vw, 26px); top:0; bottom:0; width:3px; background:linear-gradient(var(--b), var(--g)); opacity:.6}
+    .step{display:grid; grid-template-columns:60px 1fr; gap:1rem; align-items:start; margin-bottom:1rem}
+    .badge{width:52px; height:52px; display:grid; place-items:center; border-radius:14px; font-weight:900; color:#08131c; background:var(--y); box-shadow:var(--shadow)}
+    .step .frame{margin-top:.4rem}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; margin-top:1rem}
+    .gallery img{aspect-ratio:1/1; object-fit:cover; border-radius:12px; outline:1px solid rgba(255,255,255,.08)}
+
+    /* Quote */
+    .quote{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.2rem; align-items:center}
+    blockquote{margin:0; padding:1.2rem 1.2rem 1.2rem 1.1rem; border-left:6px solid var(--g); background:var(--panel); border-radius:0 var(--radius) var(--radius) 0}
+    blockquote p{font-size:1.1rem}
+
+    /* CTA band */
+    .cta-band{background:linear-gradient(90deg, rgba(17,138,178,.18), rgba(6,214,160,.18), rgba(239,71,111,.18)); border-top:1px solid rgba(255,255,255,.05); border-bottom:1px solid rgba(255,255,255,.05)}
+    .cta-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:1rem; align-items:center}
+
+    /* Footer */
+    footer{padding:2.5rem 0 4rem; color:var(--muted)}
+    .footer-grid{display:grid; grid-template-columns:1.1fr .9fr 1fr; gap:2rem}
+    .col h5{margin:.4rem 0 .6rem}
+    .small{font-size:.9rem; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .hero .container{grid-template-columns:1fr; padding:3rem 0 1.2rem}
+      .quote, .cta-inner{grid-template-columns:1fr}
+      .pillars{grid-template-columns:1fr; gap:.9rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      nav ul{display:none}
+      .stats{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* Reveal Animations */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
+    .reveal.in{opacity:1; transform:translateY(0)}
+  </style>
 </head>
 <body>
-  <!-- ================= NAVIGATION ================= -->
+  <!-- ====== NAV ====== -->
   <header>
     <div class="container navwrap">
-      <a class="brand" href="#top">
-        <span class="logo"></span>
+      <a class="brand" href="#top" aria-label="BoomBot home">
+        <span class="logo" aria-hidden="true"></span>
         <h1>BoomBot</h1>
       </a>
-
-      <nav>
+      <nav aria-label="Primary">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#pillars">Pillars</a></li>
           <li><a href="#impact">Impact</a></li>
           <li><a href="#journey">Journey</a></li>
-          <li><a href="#classroom">Classrooms</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#classroom">In Classrooms</a></li>
+          <li><a href="#contact">Bring BoomBot</a></li>
         </ul>
       </nav>
-
       <div class="cta">
         <a class="btn alt" href="#video">Watch video</a>
         <a class="btn" href="#contact">Bring BoomBot</a>
@@ -39,154 +148,270 @@
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
+  <!-- ====== HERO ====== -->
   <main id="top" class="hero">
-    <div class="bg"></div>
+    <div class="bg" aria-hidden="true"></div>
     <div class="container">
       <div>
         <span class="tagline">Music × Robotics × Service</span>
         <h2 class="reveal">Learning that kids can hear, see, and feel.</h2>
-        <p class="lede reveal">BoomBot is an educational, percussive robot that plays Boomwhackers to introduce music and robotics—together. Designed to be welcoming, durable, and kid-friendly, BoomBot invites students to pick up an instrument, play along, and discover STEAM through rhythm.</p>
+        <p class="lede reveal" style="margin-bottom:.3rem">BoomBot is an educational, percussive robot that plays Boomwhackers to introduce music and robotics—together. Designed to be welcoming, durable, and kid‑friendly, BoomBot invites students to pick up an instrument, play along, and discover STEAM through rhythm.</p>
         <p class="reveal">Title I or STEM magnet, small groups or assemblies—BoomBot adapts to meet students where they are and turns curiosity into confidence.</p>
-
         <div class="actions reveal">
           <a class="btn" href="#contact">Bring BoomBot to your school</a>
-          <a class="btn alt" href="#video">2-min demo</a>
+          <a class="btn alt" href="#video">2‑min demo</a>
         </div>
       </div>
-
       <div class="hero-media reveal">
         <figure class="frame">
-          <img src="images/hero-classroom.jpg" alt="Hrehaan and BoomBot leading an activity with students" />
+          <!-- Replace with a real image of you + students -->
+          <img src="images/hero-classroom.jpg" alt="Hrehaan and BoomBot leading an interactive music & robotics activity with smiling elementary students" />
         </figure>
         <figcaption class="caption">First look: BoomBot and students learning rhythm and circuits together.</figcaption>
       </div>
     </div>
   </main>
 
-  <!-- ================= ABOUT SECTION ================= -->
+  <!-- ====== ABOUT ====== -->
   <section id="about">
     <div class="container">
       <div class="reveal lede">
         <h3>What is BoomBot?</h3>
-        <p><strong>BoomBot</strong> is a hands-on learning experience built around a percussive robot and entry-level instruments called <em>Boomwhackers</em>. Students meet a friendly, expressive robot, learn rhythms and melodies, and peek under the hood at circuits, microcontrollers, and code.</p>
+        <p><strong>BoomBot</strong> is a hands‑on learning experience built around a percussive robot and entry‑level instruments called <em>Boomwhackers</em>. Students meet a friendly, expressive robot, learn rhythms and melodies, and peek under the hood at circuits, microcontrollers, and code. It’s simple on purpose—so kids can touch, play, and learn without fear.</p>
       </div>
-
-      <div id="video" class="reveal">
-        <div class="frame" style="aspect-ratio:16/9;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/cnYcpTfaEBY" title="BoomBot demo video" frameborder="0" allowfullscreen></iframe>
+      <div id="video" class="reveal" style="margin-top:1rem">
+        <div class="frame" style="aspect-ratio:16/9; background:#000">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/cnYcpTfaEBY" title="BoomBot demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <p class="caption">Watch a quick demo of BoomBot in action.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= PILLARS ================= -->
+  <!-- ====== PILLARS ====== -->
   <section id="pillars">
     <div class="container">
       <h3 class="reveal">Three pillars. One mission.</h3>
-      <p class="lede reveal">Every session blends <strong>Music</strong> (expression), <strong>Robotics</strong> (curiosity), and <strong>Service</strong> (inclusion).</p>
-
+      <p class="lede reveal">Every session blends <strong>Music</strong> (confidence & expression), <strong>Robotics</strong> (curiosity & problem‑solving), and <strong>Service</strong> (access & inclusion). The goal: make STEAM feel human, joyful, and for everyone.</p>
       <div class="pillars">
-        <article class="card reveal">
-          <div class="tagbar music"></div>
-          <h4>Music</h4>
-          <p>Students learn rhythm and melody by performing <em>with</em> the robot. Music becomes a doorway to pattern recognition, timing, and teamwork.</p>
-          <img src="images/pillar-music.jpg" class="frame" alt="Students and BoomBot performing a song">
+        <article class="card reveal" aria-labelledby="p-music">
+          <div class="tagbar" style="background:linear-gradient(90deg,var(--r),var(--o))"></div>
+          <h4 id="p-music">Music</h4>
+          <p>From “Hot Cross Buns” to classroom favorites, students learn rhythm, patterns, and melody by performing <em>with</em> the robot. Music becomes a doorway to pattern recognition, timing, and teamwork.</p>
+          <figure class="frame" style="margin-top:.6rem"><img src="images/pillar-music.jpg" alt="Students and BoomBot performing a simple song together using Boomwhackers"></figure>
         </article>
-
-        <article class="card reveal">
-          <div class="tagbar robotics"></div>
-          <h4>Robotics</h4>
-          <p>Students see how inputs become motion and sound—then try it themselves safely.</p>
-          <img src="images/pillar-robotics.jpg" class="frame" alt="BoomBot electronics">
+        <article class="card reveal" aria-labelledby="p-robotics">
+          <div class="tagbar" style="background:linear-gradient(90deg,var(--y),var(--g))"></div>
+          <h4 id="p-robotics">Robotics</h4>
+          <p>Behind the beats: microcontrollers, sensors, and motors. Students see how inputs become motion and sound—then try it themselves, safely and simply.</p>
+          <figure class="frame" style="margin-top:.6rem"><img src="images/pillar-robotics.jpg" alt="Closeup of BoomBot's components with labeled parts students can understand"></figure>
         </article>
-
-        <article class="card reveal">
-          <div class="tagbar service"></div>
-          <h4>Service</h4>
-          <p>Partnering with <a href="https://www.sewausa.org/" target="_blank">SEWA</a>, BoomBot brings STEAM to Title I schools and diverse communities.</p>
-          <img src="images/pillar-service.jpg" class="frame" alt="BoomBot session at a Title I school">
+        <article class="card reveal" aria-labelledby="p-service">
+          <div class="tagbar" style="background:linear-gradient(90deg,var(--b),var(--v))"></div>
+          <h4 id="p-service">Service</h4>
+          <p>Partnering with organizations like <a href="https://www.sewausa.org/" target="_blank" rel="noopener">SEWA</a>, BoomBot brings STEAM experiences to Title I schools and diverse communities—because access matters.</p>
+          <figure class="frame" style="margin-top:.6rem"><img src="images/pillar-service.jpg" alt="BoomBot sessions at a Title I school with joyful, engaged students"></figure>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ================= IMPACT ================= -->
+  <!-- ====== IMPACT ====== -->
   <section id="impact">
     <div class="container">
       <h3 class="reveal">Impact at a glance</h3>
+      <p class="reveal lede">We measure what matters: engagement, access, and confidence. As the project grows, so do the smiles—and the skills.</p>
       <div class="stats">
         <div class="stat reveal"><b>150+</b><span>students reached</span></div>
         <div class="stat reveal"><b>15+</b><span>school sessions</span></div>
-        <div class="stat reveal"><b>92%</b><span>more confident</span></div>
-        <div class="stat reveal"><b>∞</b><span>high-fives</span></div>
+        <div class="stat reveal"><b>92%</b><span>reported “more confident”</span></div>
+        <div class="stat reveal"><b>∞</b><span>high‑fives given</span></div>
       </div>
+      <p class="small" style="margin-top:.6rem">* Replace with your latest numbers; add a short methodology note if you like.</p>
     </div>
   </section>
 
-  <!-- ================= JOURNEY TIMELINE ================= -->
+  <!-- ====== JOURNEY / TIMELINE ====== -->
   <section id="journey">
     <div class="container">
-      <h3 class="reveal">From idea to instrument</h3>
+      <h3 class="reveal">From idea to instrument: the BoomBot journey</h3>
+      <p class="reveal lede">A simple question started it: <em>What if a robot could teach rhythm?</em> The journey since has been equal parts persistence, prototyping, and play.</p>
       <div class="timeline">
         <div class="step reveal">
-          <div class="badge">01</div>
+          <div class="badge" aria-hidden="true">01</div>
           <div>
-            <h4>Sketches & prototypes</h4>
-            <p>Cardboard arms, rubber mallets, and endless trial-and-error.</p>
-            <img src="images/journey-1.jpg" class="frame" alt="Early BoomBot prototype">
+            <h4>Sketches & snack‑table prototypes</h4>
+            <p>Cardboard arms, rubber mallets, and a lot of trial‑and‑error. The goal: safely strike Boomwhackers with consistent tone.</p>
+            <figure class="frame"><img src="images/journey-1.jpg" alt="Early cardboard prototype of BoomBot on a table"></figure>
           </div>
         </div>
-
         <div class="step reveal">
-          <div class="badge green">02</div>
+          <div class="badge" aria-hidden="true" style="background:var(--g)">02</div>
           <div>
-            <h4>Electronics & expressions</h4>
-            <p>LED faces and microcontrollers to teach emotions through robotics.</p>
-            <img src="images/journey-2.jpg" class="frame" alt="LED face prototype">
+            <h4>Electronics & expressiveness</h4>
+            <p>Microcontrollers, motor control, and LED faces to mirror emotions—angry, sad, silly—so kids connect with the robot.</p>
+            <figure class="frame"><img src="images/journey-2.jpg" alt="LED face prototype displaying a playful expression"></figure>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="badge" aria-hidden="true" style="background:var(--b); color:#e6f6ff">03</div>
+          <div>
+            <h4>Classroom pilots</h4>
+            <p>Small‑group sessions validate the flow: learn a beat, peek at the circuits, perform together. Feedback drives tweaks for durability and timing.</p>
+            <figure class="frame"><img src="images/journey-3.jpg" alt="Students gathered around BoomBot during a pilot session"></figure>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="badge" aria-hidden="true" style="background:var(--v); color:#f2e8ff">04</div>
+          <div>
+            <h4>Scaling access</h4>
+            <p>Partnerships with local schools and service orgs expand reach. Kit‑style materials and lesson plans make visits easy and repeatable.</p>
+            <figure class="frame"><img src="images/journey-4.jpg" alt="Boxes of session kits ready to be delivered to schools"></figure>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
+  <!-- ====== IN THE CLASSROOM ====== -->
+  <section id="classroom">
+    <div class="container">
+      <div class="quote">
+        <div class="reveal">
+          <h3>What a session looks like</h3>
+          <ol>
+            <li><strong>Meet</strong> BoomBot & the Boomwhackers (friendly faces + safety check).</li>
+            <li><strong>Play</strong> along: rhythm‑call and response, then a short song.</li>
+            <li><strong>Peek</strong> inside: see how code becomes sound and motion.</li>
+            <li><strong>Create</strong>: students try a pattern, then perform together.</li>
+          </ol>
+          <p class="small">Ideal group size: ~7 students per mini‑block for a personal, hands‑on experience.</p>
+        </div>
+        <figure class="reveal frame" style="margin:0">
+          <img src="images/session.jpg" alt="A small group of students gathered in a circle, each with a Boomwhacker, smiling with BoomBot" />
+        </figure>
+      </div>
+
+      <div class="reveal" style="margin-top:1.5rem">
+        <blockquote>
+          <p>“The kids still talk about BoomBot months later—and they’re more eager to try science and music activities in class.”</p>
+          <cite>— SEWA summer program director</cite>
+        </blockquote>
+      </div>
+
+      <div class="gallery reveal" aria-label="Photo gallery">
+        <!-- Replace with your own photos; feel free to add more tiles -->
+        <img src="images/g1.jpg" alt="Student high‑fiving BoomBot">
+        <img src="images/g2.jpg" alt="Close‑up of BoomBot striking a Boomwhacker">
+        <img src="images/g3.jpg" alt="Hrehaan demonstrating a simple circuit to students">
+        <img src="images/g4.jpg" alt="Group performance with BoomBot conducting">
+        <img src="images/g5.jpg" alt="Students laughing during a rhythm game">
+        <img src="images/g6.jpg" alt="Teacher observing a hands‑on activity with smiles">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA BAND ====== -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div class="reveal">
+        <h3>Ready to make STEAM sing?</h3>
+        <p class="lede">BoomBot brings music, robotics, and community together. Book a visit or collaborate on outreach—we’re excited to meet your students.</p>
+      </div>
+      <div class="reveal" style="justify-self:end">
+        <a class="btn" href="#contact">Bring BoomBot</a>
+        <a class="btn alt" href="https://www.sewausa.org/" target="_blank" rel="noopener">Learn about SEWA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
   <section id="contact">
     <div class="container">
       <h3 class="reveal">Bring BoomBot to your school</h3>
-      <div class="card reveal">
-        <label>Email:</label>
-        <input id="teacher-email" type="email" placeholder="name@school.org" />
+      <p class="reveal lede">Here’s a message I share with elementary teachers. Feel free to copy, adapt, or send it directly below.</p>
 
-        <label>Message:</label>
-        <textarea id="message" rows="10">Since I was young, I've been passionate about music and robotics...</textarea>
+      <div class="card reveal" style="display:grid; gap:1rem">
+        <label class="small" for="teacher-email">Teacher/Coordinator Email</label>
+        <input id="teacher-email" type="email" placeholder="name@school.org" style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+        <label class="small" for="message">Message</label>
+        <textarea id="message" rows="9" style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)">Since I was young, I've been passionate about music and robotics, and, for the last year and a half, I've been creating an innovative, unique robot that combines these passions to support elementary schoolers' involvement in STEAM: BoomBot!
 
-        <div class="btn-row">
-          <button class="btn" id="copy">Copy Message</button>
-          <a class="btn alt" id="mailto" href="#">Open in Email</a>
+BoomBot! is an educational, percussive robot that uses entry-level percussion instruments, Boomwhackers, to introduce music, robotics, and the creative intersection of music and robotics. The target audience are elementary schoolers from all communities, Title I to STEM, and I'm currently in the process of bringing it to local schools! The robot is purposefully simplistic and designed to be welcoming, engaging, kid-friendly, and durable so students can interact and learn from him!
+
+BoomBot! is also designed to be collaborative. Students can pick up a boomwhacker and play along with BoomBot! as BoomBot! teaches them how to play songs!
+
+Here's a short video that helps put a face to the name: https://youtu.be/cnYcpTfaEBY
+
+I'm reaching out with hope that I can bring BoomBot! to your school to support students' growth in STEAM. For an ASP session, groups of ~7 students can come one at a time so the experience is personal and meaningful.
+
+Let me know your thoughts, and if we can make this possibility a reality!
+— Hrehaan</textarea>
+        <div style="display:flex; gap:.8rem; flex-wrap:wrap">
+          <button class="btn" id="copy">Copy message</button>
+          <a class="btn alt" id="mailto" href="#">Open in email app</a>
         </div>
+        <p class="small">Tip: replace names, times, and links as needed.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- ====== FOOTER ====== -->
   <footer>
     <div class="container footer-grid">
-      <div>
-        <span class="logo"></span>
-        <p>BoomBot: teaching kids the rhythm of robotics.</p>
+      <div class="col">
+        <div class="brand" style="margin-bottom:.4rem"><span class="logo" aria-hidden="true"></span><h1>BoomBot</h1></div>
+        <p class="small">An educational, percussive robot helping kids discover the creative intersection of music and robotics.</p>
       </div>
-      <div>
-        <p><a href="#video">Demo</a> · <a href="#pillars">Pillars</a> · <a href="#journey">Journey</a></p>
+      <div class="col">
+        <h5>Quick links</h5>
+        <p class="small"><a href="#video">Demo video</a> · <a href="#pillars">Pillars</a> · <a href="#journey">Journey</a> · <a href="#contact">Bring BoomBot</a></p>
+        <p class="small">Partners: <a href="https://www.sewausa.org/" target="_blank" rel="noopener">SEWA</a></p>
       </div>
-      <div>
-        <p>© <span id="year"></span> BoomBot.fun</p>
+      <div class="col">
+        <h5>Say hello</h5>
+        <p class="small">Email: <a href="mailto:hello@boombot.fun">hello@boombot.fun</a></p>
+        <p class="small">© <span id="year"></span> BoomBot.fun</p>
       </div>
     </div>
   </footer>
 
-  <!-- ================= JS ================= -->
-  <script src="script.js"></script>
+  <script>
+    // IntersectionObserver reveal
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} })
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Copy + mailto helpers
+    const copyBtn = document.getElementById('copy');
+    const msg = document.getElementById('message');
+    const emailLink = document.getElementById('mailto');
+    const toField = document.getElementById('teacher-email');
+    copyBtn?.addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(msg.value); copyBtn.textContent='Copied! ✅'; setTimeout(()=>copyBtn.textContent='Copy message',1500);}catch(err){ copyBtn.textContent='Press Ctrl/Cmd+C to copy'; }
+    });
+    emailLink?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const to = encodeURIComponent(toField.value || '');
+      const subject = encodeURIComponent('BoomBot — Music × Robotics demo session');
+      const body = encodeURIComponent(msg.value);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- SEO / Social -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BoomBot",
+    "url": "https://boombot.fun",
+    "sameAs": ["https://www.sewausa.org/"],
+    "description": "An educational, percussive robot introducing kids to the creative intersection of music and robotics.",
+    "logo": "https://boombot.fun/icon.png"
+  }
+  </script>
 </body>
 </html>
