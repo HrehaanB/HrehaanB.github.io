@@ -1,0 +1,98 @@
+/* ------------------------------
+   GLOBAL STYLES
+--------------------------------*/
+:root {
+  --bg: #0b0c10;
+  --panel: #11131a;
+  --ink: #e6e8ee;
+  --muted: #aab2c0;
+  --accent: #ffd166;
+  --r: #ef476f; --o: #f78c6b; --y: #ffd166;
+  --g: #06d6a0; --b: #118ab2; --v: #8338ec;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+  --radius-lg: 28px;
+  --maxw: 1150px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+/* ------------------------------
+   LAYOUT HELPERS
+--------------------------------*/
+.container {
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline: auto;
+}
+
+.frame {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* ------------------------------
+   NAVIGATION
+--------------------------------*/
+header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(11,12,16,.6);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.navwrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
+.btn {
+  background: var(--b);
+  color: #08131c;
+  border: none;
+  border-radius: 999px;
+  padding: .75rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.btn.alt {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.2);
+  color: var(--ink);
+}
+
+/* ------------------------------
+   REVEAL ANIMATIONS
+--------------------------------*/
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all .8s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------
+   FOOTER
+--------------------------------*/
+footer {
+  padding: 2rem 0;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
