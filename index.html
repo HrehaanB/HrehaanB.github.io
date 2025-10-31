@@ -32,7 +32,7 @@
     .navwrap{display:flex; align-items:center; justify-content:space-between; padding:1rem 0}
     .brand{display:flex; align-items:center; gap:.8rem}
     .logo{
-      width:42px;height:42px; border-radius:12px; background:linear-gradient(135deg,var(--r),var(--y),var(--g),var(--b),var(--v));
+      width:42px;height:42px; border-radius:12px; background:url('images/logo.png') center/cover no-repeat;
       box-shadow:0 6px 18px rgba(0,0,0,.35); position:relative; overflow:hidden
     }
     .brand h1{font:900 1.15rem/1 Nunito, Inter, sans-serif; letter-spacing:.3px}
@@ -329,29 +329,17 @@
   <section id="contact">
     <div class="container">
       <h3 class="reveal">Bring BoomBot to your school</h3>
-      <p class="reveal lede">Here’s a message I share with elementary teachers. Feel free to copy, adapt, or send it directly below.</p>
+      <p class="reveal lede">Let's make learning fun together!</p>
 
       <div class="card reveal" style="display:grid; gap:1rem">
         <label class="small" for="teacher-email">Teacher/Coordinator Email</label>
         <input id="teacher-email" type="email" placeholder="name@school.org" style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
         <label class="small" for="message">Message</label>
-        <textarea id="message" rows="9" style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)">Since I was young, I've been passionate about music and robotics, and, for the last year and a half, I've been creating an innovative, unique robot that combines these passions to support elementary schoolers' involvement in STEAM: BoomBot!
-
-BoomBot! is an educational, percussive robot that uses entry-level percussion instruments, Boomwhackers, to introduce music, robotics, and the creative intersection of music and robotics. The target audience are elementary schoolers from all communities, Title I to STEM, and I'm currently in the process of bringing it to local schools! The robot is purposefully simplistic and designed to be welcoming, engaging, kid-friendly, and durable so students can interact and learn from him!
-
-BoomBot! is also designed to be collaborative. Students can pick up a boomwhacker and play along with BoomBot! as BoomBot! teaches them how to play songs!
-
-Here's a short video that helps put a face to the name: https://youtu.be/cnYcpTfaEBY
-
-I'm reaching out with hope that I can bring BoomBot! to your school to support students' growth in STEAM. For an ASP session, groups of ~7 students can come one at a time so the experience is personal and meaningful.
-
-Let me know your thoughts, and if we can make this possibility a reality!
-— Hrehaan</textarea>
+        <textarea id="message" rows="9" style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)"></textarea>
         <div style="display:flex; gap:.8rem; flex-wrap:wrap">
           <button class="btn" id="copy">Copy message</button>
           <a class="btn alt" id="mailto" href="#">Open in email app</a>
         </div>
-        <p class="small">Tip: replace names, times, and links as needed.</p>
       </div>
     </div>
   </section>
