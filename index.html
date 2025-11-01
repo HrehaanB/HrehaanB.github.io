@@ -124,16 +124,6 @@
       padding: 0.9rem 1rem; /* slightly less padding inside each card */
     }
 
-    /* Style + crop for the electronics video */
-    .electronics-video {
-      width: 100%;
-      height: 400px;             /* controls visible height, adjust as you like */
-      object-fit: cover;         /* zooms + crops */
-      object-position: center 60%; /* move crop region up or down */
-      border-radius: 18px;       /* matches your card rounding */
-      display: block;
-    }
-
     /* Stats */
     .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.3rem}
     .stat{padding:1.1rem; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06); text-align:center}
@@ -382,16 +372,7 @@
         </div>
         <div class="step reveal">
           <div class="badge" aria-hidden="true" style="background:var(--g)">02</div>
-          <div>
-            <h4>Electronics & expressiveness</h4>
-            <p>Microcontrollers, servo control, and bringing BoomBot to life</p>
-            <figure class="frame">
-              <video class="electronics-video" autoplay loop muted playsinline>
-                <source src="images/2developmentVid.mov" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </figure>
-          </div>
+          <div> <h4>Electronics & expressiveness</h4> <p>Microcontrollers, servo control, and bringing BoomBot to life</p> <figure class="frame"><img src="images/2developmentVid.mov" alt="LED face prototype displaying a playful expression"></figure> </div>
         </div>
         <div class="step reveal">
           <div class="badge" aria-hidden="true" style="background:var(--b); color:#e6f6ff">03</div>
