@@ -110,6 +110,20 @@
     .card h4{margin:.2rem 0 .35rem; font-size:1.12rem}
     .tagbar{height:8px; border-radius:8px; background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--v)); margin-bottom:.7rem}
 
+    /* Reduce extra space around pillar images */
+    #pillars .card figure {
+      margin-top: 0.4rem !important; /* tighten top space */
+      margin-bottom: 0.4rem !important; /* tighten bottom space */
+    }
+
+    #pillars .card img {
+      border-radius: 14px; /* optional: matches the card shape nicely */
+    }
+
+    #pillars .card {
+      padding: 0.9rem 1rem; /* slightly less padding inside each card */
+    }
+
     /* Stats */
     .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.3rem}
     .stat{padding:1.1rem; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06); text-align:center}
