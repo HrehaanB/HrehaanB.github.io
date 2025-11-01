@@ -136,6 +136,15 @@
     .step{display:grid; grid-template-columns:60px 1fr; gap:1rem; align-items:start; margin-bottom:1rem}
     .badge{width:52px; height:52px; display:grid; place-items:center; border-radius:14px; font-weight:900; color:#08131c; background:var(--y); box-shadow:var(--shadow)}
     .step .frame{margin-top:.4rem}
+    
+    /* Limit journey image size */
+    #journey .frame img {
+      max-width: 480px;      /* adjust as you like — 400–500px looks balanced */
+      width: 100%;           /* keeps it responsive below the cap */
+      height: auto;          /* preserves proportions */
+      margin-inline: auto;   /* centers the image */
+      display: block;
+    }
 
     /* Gallery */
     .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; margin-top:1rem}
@@ -330,10 +339,10 @@
   <section id="impact">
     <div class="container">
       <h3 class="reveal">Impact at a glance</h3>
-      <p class="reveal lede">We measure what matters: engagement, access, and confidence. As the project grows, so do the smiles—and the skills.</p>
+      <p class="reveal lede">As the project grows, so do the smiles—and the skills. Creating an environment of confidence and curiosity is of upmost importance.</p>
       <div class="stats">
         <div class="stat reveal"><b>93+</b><span>students reached</span></div>
-        <div class="stat reveal"><b>6+</b><span>events</span></div>
+        <div class="stat reveal"><b>6+</b><span>community events</span></div>
         <div class="stat reveal"><b>97%</b><span>excited to build their own robot</span></div>
         <div class="stat reveal"><b>93%</b><span>confident in playing music</span></div>
       </div>
