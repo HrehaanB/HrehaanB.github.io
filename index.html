@@ -37,8 +37,25 @@
     }
     .brand h1{font:900 1.15rem/1 Nunito, Inter, sans-serif; letter-spacing:.3px}
     nav ul{display:flex; gap:1.2rem; list-style:none; margin:0; padding:0}
-    nav a{padding:.55rem .8rem; border-radius:999px; color:var(--muted)}
-    nav a:hover, nav a:focus{background:rgba(255,255,255,.07); color:var(--ink)}
+    nav a {
+      padding: .55rem .8rem;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background .25s ease, color .25s ease;
+    }
+
+    /* Base hover fallback */
+    nav a:hover, nav a:focus {
+      color: var(--ink);
+    }
+
+    /* Individual Boomwhacker hover colors */
+    nav li:nth-child(1) a:hover, nav li:nth-child(1) a:focus { background: var(--r); color:#08131c; } /* About → Red */
+    nav li:nth-child(2) a:hover, nav li:nth-child(2) a:focus { background: var(--o); color:#08131c; } /* Pillars → Orange */
+    nav li:nth-child(3) a:hover, nav li:nth-child(3) a:focus { background: var(--y); color:#08131c; } /* Impact → Yellow */
+    nav li:nth-child(4) a:hover, nav li:nth-child(4) a:focus { background: var(--g); color:#08131c; } /* Journey → Green */
+    nav li:nth-child(5) a:hover, nav li:nth-child(5) a:focus { background: var(--b); color:#e6f6ff; } /* In Classrooms → Blue */
+    nav li:nth-child(6) a:hover, nav li:nth-child(6) a:focus { background: var(--v); color:#f3e8ff; } /* Bring BoomBot → Violet */
     .cta{display:flex; gap:.75rem}
     .btn{--bgc:var(--b); --inkc:#08131c; display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1rem; border-radius:999px; font-weight:700; background:var(--bgc); color:var(--inkc); box-shadow:var(--shadow); border:0; cursor:pointer}
     .btn.alt{--bgc:transparent; --inkc:var(--ink); border:1px solid rgba(255,255,255,.15)}
