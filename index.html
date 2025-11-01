@@ -156,6 +156,16 @@
       .footer-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(3,1fr)}
     }
+    @media (max-width: 800px) {
+      #contact .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      #contact img {
+        max-width: 70%;
+        margin-inline: auto;
+      }
+    }
 
     /* Reveal Animations */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
@@ -366,10 +376,13 @@
   <!-- ====== CONTACT ====== -->
 <section id="contact">
   <div class="container">
-    <h3 class="reveal">Contact Me</h3>
+    <h3 class="reveal">Contact BoomBot</h3>
     <p class="reveal lede">Have questions, collaboration ideas, or want BoomBot at your event? Let’s connect!</p>
 
-    <div class="card reveal" style="display:grid; gap:1rem; max-width:600px; margin-top:1.5rem">
+    <div class="card reveal" 
+      style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:2rem; max-width:900px; margin-top:1.5rem">
+
+      <!-- Left side: the contact form -->
       <form id="contact-form" style="display:grid; gap:1rem">
         <label class="small" for="name">Your Name</label>
         <input id="name" type="text" placeholder="Full name" required
@@ -387,9 +400,17 @@
           <button class="btn" type="submit">Send Message</button>
           <button class="btn alt" type="reset">Clear</button>
         </div>
+
+        <p class="small" style="margin-top:1rem">or email me directly at 
+          <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a>
+        </p>
       </form>
 
-      <p class="small" style="margin-top:1rem">or email me directly at <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a></p>
+      <!-- Right side: the image -->
+      <figure style="text-align:center;">
+        <img src="images/blownUpLogo.png" alt="BoomBot Logo" 
+            style="max-width:100%; border-radius:18px; box-shadow:var(--shadow)">
+      </figure>
     </div>
   </div>
 </section>
