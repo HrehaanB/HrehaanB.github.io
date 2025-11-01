@@ -31,11 +31,21 @@
     header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(120%) blur(8px); background:rgba(11,12,16,.6); border-bottom:1px solid rgba(255,255,255,.06)}
     .navwrap{display:flex; align-items:center; justify-content:space-between; padding:1rem 0}
     .brand{display:flex; align-items:center; gap:.8rem}
-    .logo{
-      width:42px;height:42px; border-radius:12px; background:url('images/logo.png') center/cover no-repeat;
-      box-shadow:0 6px 18px rgba(0,0,0,.35); position:relative; overflow:hidden
+    .logo {
+      width: 64px;                   /* Increased from 42px */
+      height: 64px;
+      border-radius: 18px;           /* Slightly more rounded for a soft, friendly look */
+      background: radial-gradient(circle at center, #11131a 40%, #0b0c10 100%) center/cover no-repeat,
+                  url('images/logo.png') center/contain no-repeat;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
     }
-    .brand h1{font:900 1.15rem/1 Nunito, Inter, sans-serif; letter-spacing:.3px}
+    .brand h1 {
+      font: 900 1.25rem/1 Nunito, Inter, sans-serif;
+      letter-spacing: .3px;
+    }
+
     nav ul{display:flex; gap:1.2rem; list-style:none; margin:0; padding:0}
     nav a {
       padding: .55rem .8rem;
