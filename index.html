@@ -91,7 +91,14 @@
     .tagline{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:var(--accent); font-weight:700; background:rgba(17,19,26,.7)}
     .hero-media{position:relative}
     .frame{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); outline:1px solid rgba(255,255,255,.08)}
-    .caption{font-size:.9rem; color:var(--muted); margin-top:.7rem}
+    .caption {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-top: .6rem;
+      text-align: left;       /* keeps caption aligned under image */
+      display: block;
+      max-width: 100%;        /* ensures it stays within the figure width */
+    }
 
     /* Section shell */
     section{padding:4.5rem 0; position:relative}
@@ -198,7 +205,7 @@
           <!-- Replace with a real image of you + students -->
           <img src="images/firstPhoto.jpeg" alt="Hrehaan and BoomBot leading an interactive music & robotics activity with smiling elementary students" />
         </figure>
-        <figcaption class="caption">      First look: BoomBot and students learning rhythm and circuits together.</figcaption>
+        <figcaption class="caption">First look: BoomBot and students learning rhythm and circuits together.</figcaption>
       </div>
     </div>
   </main>
