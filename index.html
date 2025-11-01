@@ -166,6 +166,12 @@
         margin-inline: auto;
       }
     }
+    @media (max-width: 1100px) {
+      .contact-logo {
+        display: none;
+      }
+    }
+
 
     /* Reveal Animations */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
@@ -375,14 +381,12 @@
 
   <!-- ====== CONTACT ====== -->
 <section id="contact">
-  <div class="container">
+  <div class="container" style="position: relative;">
     <h3 class="reveal">Contact BoomBot</h3>
     <p class="reveal lede">Have questions, collaboration ideas, or want BoomBot at your event? Let’s connect!</p>
 
-    <div class="card reveal" 
-      style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:2rem; max-width:900px; margin-top:1.5rem">
-
-      <!-- Left side: the contact form -->
+    <!-- CONTACT BOX -->
+    <div class="card reveal" style="display:grid; gap:1rem; max-width:600px; margin-top:1.5rem;">
       <form id="contact-form" style="display:grid; gap:1rem">
         <label class="small" for="name">Your Name</label>
         <input id="name" type="text" placeholder="Full name" required
@@ -400,18 +404,18 @@
           <button class="btn" type="submit">Send Message</button>
           <button class="btn alt" type="reset">Clear</button>
         </div>
-
-        <p class="small" style="margin-top:1rem">or email me directly at 
-          <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a>
-        </p>
       </form>
 
-      <!-- Right side: the image -->
-      <figure style="text-align:center;">
-        <img src="images/blownUpLogo.png" alt="BoomBot Logo" 
-            style="max-width:100%; border-radius:18px; box-shadow:var(--shadow)">
-      </figure>
+      <p class="small" style="margin-top:1rem">
+        or email me directly at <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a>
+      </p>
     </div>
+
+    <!-- FLOATING IMAGE (outside the box) -->
+    <img src="images/blownUpLogo.png" 
+         alt="BoomBot logo" 
+         class="contact-logo" 
+         style="position: absolute; right: -260px; top: 120px; width: 240px; max-width: 30%; border-radius: 18px; box-shadow: var(--shadow);">
   </div>
 </section>
 
