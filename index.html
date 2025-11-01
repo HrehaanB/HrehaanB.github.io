@@ -172,6 +172,48 @@
       }
     }
 
+    /* Contact layout */
+    .contact-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-flex .left-side {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    .contact-flex .right-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-flex .right-side img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      object-fit: contain;
+    }
+
+    /* Mobile: stack image below form */
+    @media (max-width: 950px) {
+      .contact-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-flex .right-side img {
+        max-width: 70%;
+        margin-top: 2rem;
+      }
+    } 
+
 
     /* Reveal Animations */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
@@ -380,44 +422,44 @@
   </section>
 
   <!-- ====== CONTACT ====== -->
-<section id="contact">
-  <div class="container" style="position: relative;">
-    <h3 class="reveal">Contact BoomBot</h3>
-    <p class="reveal lede">Have questions, collaboration ideas, or want BoomBot at your event? Let’s connect!</p>
+  <section id="contact">
+    <div class="container contact-flex">
+      <div class="left-side">
+        <h3 class="reveal">Contact BoomBot</h3>
+        <p class="reveal lede">Have questions, collaboration ideas, or want BoomBot at your event? Let’s connect!</p>
 
-    <!-- CONTACT BOX -->
-    <div class="card reveal" style="display:grid; gap:1rem; max-width:600px; margin-top:1.5rem;">
-      <form id="contact-form" style="display:grid; gap:1rem">
-        <label class="small" for="name">Your Name</label>
-        <input id="name" type="text" placeholder="Full name" required
-          style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+        <div class="card reveal" style="display:grid; gap:1rem; max-width:600px; margin-top:1.5rem">
+          <form id="contact-form" style="display:grid; gap:1rem">
+            <label class="small" for="name">Your Name</label>
+            <input id="name" type="text" placeholder="Full name" required
+              style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
 
-        <label class="small" for="email">Your Email</label>
-        <input id="email" type="email" placeholder="name@example.com" required
-          style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+            <label class="small" for="email">Your Email</label>
+            <input id="email" type="email" placeholder="name@example.com" required
+              style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
 
-        <label class="small" for="message">Message</label>
-        <textarea id="message" rows="6" placeholder="Write your message here..." required
-          style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)"></textarea>
+            <label class="small" for="message">Message</label>
+            <textarea id="message" rows="6" placeholder="Write your message here..." required
+              style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)"></textarea>
 
-        <div style="display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.5rem">
-          <button class="btn" type="submit">Send Message</button>
-          <button class="btn alt" type="reset">Clear</button>
+            <div style="display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.5rem">
+              <button class="btn" type="submit">Send Message</button>
+              <button class="btn alt" type="reset">Clear</button>
+            </div>
+          </form>
+
+          <p class="small" style="margin-top:1rem">
+            or email me directly at <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a>
+          </p>
         </div>
-      </form>
+      </div>
 
-      <p class="small" style="margin-top:1rem">
-        or email me directly at <a href="mailto:contact.boombot@gmail.com">contact.boombot@gmail.com</a>
-      </p>
+      <!-- Right side: the image filling the space -->
+      <div class="right-side">
+        <img src="images/blownUpLogo.png" alt="BoomBot logo" class="reveal">
+      </div>
     </div>
-
-    <!-- FLOATING IMAGE (outside the box) -->
-    <img src="images/blownUpLogo.png" 
-         alt="BoomBot logo" 
-         class="contact-logo" 
-         style="position: absolute; right: -260px; top: 120px; width: 240px; max-width: 30%; border-radius: 18px; box-shadow: var(--shadow);">
-  </div>
-</section>
+  </section>
 
   <!-- ====== FOOTER ====== -->
   <footer>
