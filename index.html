@@ -146,6 +146,16 @@
       display: block;
     }
 
+    #journey .frame img {
+      width: 100%;
+      max-width: 480px;
+      height: 280px;          /* fixed height */
+      object-fit: cover;      /* crops nicely instead of squishing */
+      border-radius: 14px;    /* keeps the rounded style */
+      margin-inline: auto;
+      display: block;
+    }
+
     /* Gallery */
     .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; margin-top:1rem}
     .gallery img{aspect-ratio:1/1; object-fit:cover; border-radius:12px; outline:1px solid rgba(255,255,255,.08)}
