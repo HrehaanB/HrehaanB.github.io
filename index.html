@@ -343,23 +343,35 @@
   </section>
 
   <!-- ====== CONTACT ====== -->
-  <section id="contact">
-    <div class="container">
-      <h3 class="reveal">Bring BoomBot to your school</h3>
-      <p class="reveal lede">Let's make learning fun together!</p>
+<section id="contact">
+  <div class="container">
+    <h3 class="reveal">Contact Us</h3>
+    <p class="reveal lede">Have questions, collaboration ideas, or want BoomBot at your school? Let’s connect!</p>
 
-      <div class="card reveal" style="display:grid; gap:1rem">
-        <label class="small" for="teacher-email">Teacher/Coordinator Email</label>
-        <input id="teacher-email" type="email" placeholder="name@school.org" style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+    <div class="card reveal" style="display:grid; gap:1rem; max-width:600px; margin-top:1.5rem">
+      <form id="contact-form" style="display:grid; gap:1rem">
+        <label class="small" for="name">Your Name</label>
+        <input id="name" type="text" placeholder="Full name" required
+          style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+
+        <label class="small" for="email">Your Email</label>
+        <input id="email" type="email" placeholder="name@example.com" required
+          style="padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)" />
+
         <label class="small" for="message">Message</label>
-        <textarea id="message" rows="9" style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)"></textarea>
-        <div style="display:flex; gap:.8rem; flex-wrap:wrap">
-          <button class="btn" id="copy">Copy message</button>
-          <a class="btn alt" id="mailto" href="#">Open in email app</a>
+        <textarea id="message" rows="6" placeholder="Write your message here..." required
+          style="padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e1118; color:var(--ink)"></textarea>
+
+        <div style="display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.5rem">
+          <button class="btn" type="submit">Send Message</button>
+          <button class="btn alt" type="reset">Clear</button>
         </div>
-      </div>
+      </form>
+
+      <p class="small" style="margin-top:1rem">or email us directly at <a href="mailto:hsbhutada@gmail.com">hsbhutada@gmail.com</a></p>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ====== FOOTER ====== -->
   <footer>
@@ -375,7 +387,7 @@
       </div>
       <div class="col">
         <h5>Say hello</h5>
-        <p class="small">Email: <a href="mailto:hello@boombot.fun">hello@boombot.fun</a></p>
+        <p class="small">Email: <a href="mailto:hsbhutada@gmail.com">hsbhutada@gmail.com</a></p>
         <p class="small">© <span id="year"></span> BoomBot.fun</p>
       </div>
     </div>
@@ -418,5 +430,22 @@
     "logo": "https://boombot.fun/icon.png"
   }
   </script>
+
+  <script>
+  // Simple mailto link builder
+  const contactForm = document.getElementById('contact-form');
+  contactForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = encodeURIComponent(document.getElementById('name').value);
+    const email = encodeURIComponent(document.getElementById('email').value);
+    const message = encodeURIComponent(document.getElementById('message').value);
+
+    const subject = encodeURIComponent(`BoomBot Inquiry from ${name}`);
+    const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
+
+    window.location.href = `mailto:hsbhutada@gmail.com?subject=${subject}&body=${body}`;
+  });
+  </script>
+
 </body>
 </html>
