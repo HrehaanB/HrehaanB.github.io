@@ -156,6 +156,16 @@
       display: block;
     }
 
+    /* Align journey photos to the left */
+    #journey .step img {
+      display: block;
+      margin-left: 0;       /* stick to the left edge */
+      margin-right: auto;   /* prevent centering */
+      max-width: 480px;     /* optional: size cap */
+      border-radius: 14px;  /* keeps your rounded corners */
+      object-fit: cover;
+    }
+
     /* Gallery */
     .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; margin-top:1rem}
     .gallery img{aspect-ratio:1/1; object-fit:cover; border-radius:12px; outline:1px solid rgba(255,255,255,.08)}
