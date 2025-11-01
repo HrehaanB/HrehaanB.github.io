@@ -243,6 +243,44 @@
       }
     } 
 
+    /* Upcoming Events */
+    #events {
+      padding: 4rem 0;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .event-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .event-card h4 {
+      margin: 0 0 0.4rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--y);
+    }
+
+    .event-card .date {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
 
     /* Reveal Animations */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
@@ -360,7 +398,7 @@
   <section id="journey">
     <div class="container">
       <h3 class="reveal">From PVC to friend: the BoomBot journey</h3>
-      <p class="reveal lede">A simple question started it: <em>What if a robot could teach rhythm?</em> The journey since has been equal parts persistence, prototyping, and play.</p>
+      <p class="reveal lede"><em>How can a robot that plays music with students reshape the way young learners see robots—from mechanical machines to creative collaborators?</em> The journey since has been equal parts persistence, prototyping, and play.</p>
       <div class="timeline">
         <div class="step reveal">
           <div class="badge" aria-hidden="true">01</div>
@@ -442,6 +480,34 @@
       <div class="reveal" style="justify-self:end">
         <a class="btn" href="#contact">Bring BoomBot</a>
         <a class="btn alt" href="https://www.sewausa.org/" target="_blank" rel="noopener">Learn about SEWA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== UPCOMING EVENTS ====== -->
+  <section id="events">
+    <div class="container">
+      <h3 class="reveal">Upcoming Events</h3>
+      <p class="lede reveal">Join BoomBot in bringing rhythm and robotics to local classrooms and communities.</p>
+
+      <div class="events-grid">
+        <div class="event-card reveal">
+          <h4>STEM Discovery Day</h4>
+          <p class="date">📅 November 12, 2025 · Marietta Public Library</p>
+          <p>Hands-on BoomBot demo sessions and rhythm coding activities for elementary students.</p>
+        </div>
+
+        <div class="event-card reveal">
+          <h4>Winter STEAM Fair</h4>
+          <p class="date">📅 December 7, 2025 · East Valley Elementary</p>
+          <p>Collaborative music and robotics showcase featuring student-built rhythm bots!</p>
+        </div>
+
+        <div class="event-card reveal">
+          <h4>SEWA Youth Outreach</h4>
+          <p class="date">📅 January 18, 2026 · SEWA Center, Atlanta</p>
+          <p>Music + Robotics workshop with Title I students focused on creative confidence and teamwork.</p>
+        </div>
       </div>
     </div>
   </section>
