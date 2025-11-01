@@ -137,33 +137,19 @@
     .badge{width:52px; height:52px; display:grid; place-items:center; border-radius:14px; font-weight:900; color:#08131c; background:var(--y); box-shadow:var(--shadow)}
     .step .frame{margin-top:.4rem}
     
-    /* Limit journey image size */
-    #journey .frame img {
-      max-width: 480px;      /* adjust as you like — 400–500px looks balanced */
-      width: 100%;           /* keeps it responsive below the cap */
-      height: auto;          /* preserves proportions */
-      margin-inline: auto;   /* centers the image */
-      display: block;
+    /* Ensure full image is visible in Journey section */
+    #journey .frame {
+      overflow: visible; /* let the full image show */
     }
 
     #journey .frame img {
       width: 100%;
       max-width: 480px;
-      height: 280px;          /* fixed height */
-      object-fit: cover;      /* crops nicely instead of squishing */
-      border-radius: 14px;    /* keeps the rounded style */
-      margin-inline: auto;
+      height: auto;        /* keep natural proportions */
+      object-fit: contain; /* show the whole image */
+      border-radius: 18px; /* keeps your soft corners */
       display: block;
-    }
-
-    /* Align journey photos to the left */
-    #journey .step img {
-      display: block;
-      margin-left: 0;       /* stick to the left edge */
-      margin-right: auto;   /* prevent centering */
-      max-width: 480px;     /* optional: size cap */
-      border-radius: 14px;  /* keeps your rounded corners */
-      object-fit: cover;
+      margin-inline: auto; /* centers image under text */
     }
 
     /* Gallery */
