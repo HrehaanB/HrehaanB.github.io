@@ -398,6 +398,16 @@
       font-size: 1rem;
     }
 
+    .pillar-video {
+      width: 100%;
+      aspect-ratio: 1/1;        /* keeps the square format like your other pillar images */
+      object-fit: cover;         /* ensures the video fills the frame cleanly */
+      border-radius: 14px;       /* matches the rounded corners */
+      display: block;
+      background: #000;          /* prevents white flash before load */
+      box-shadow: var(--shadow);
+    }
+
     /* Reveal Animations */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
     .reveal.in{opacity:1; transform:translateY(0)}
@@ -489,7 +499,12 @@
           <div class="tagbar" style="background:linear-gradient(90deg,var(--b),var(--v))"></div>
           <h4 id="p-service">Community</h4>
           <p>Partnering with elementary schools, local libraries, and organizations like <a href="https://www.sewausa.org/" target="_blank" rel="noopener">SEWA</a>, BoomBot brings STEAM experiences to Title I schools and diverse communities—because accessibility matters.</p>
-          <figure class="frame" style="margin-top:.6rem"><img src="images/service.jpeg" alt="BoomBot sessions at a Title I school with joyful, engaged students"></figure>
+          <figure class="frame" style="margin-top:.6rem">
+            <video class="pillar-video" playsinline autoplay muted loop>
+              <source src="images/sessionClip.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </figure>
         </article>
       </div>
     </div>
@@ -595,10 +610,8 @@
         <img src="images/excitedKid.jpeg" alt="Mini BoomBot session video">
         <img src="images/kid1.jpeg" alt="Hrehaan demonstrating a simple circuit to students">
 
-        <video class="gallery-video" playsinline autoplay muted loop>
-          <source src="images/sessionClip.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <img src="images/service.jpeg" alt="Hrehaan demonstrating a simple circuit to students">
+
 
         <img src="images/tinyKid2.jpeg" alt="Student excitedly playing his boomwhacker">
         <img src="images/barbie.jpeg" alt="Teacher observing a hands-on activity with smiles">
