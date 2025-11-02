@@ -186,6 +186,24 @@
       margin-inline: auto;
     }
 
+    .journey-video .frame {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+
+    .journey-video video {
+      aspect-ratio: 1/1;         /* keeps it square */
+      width: 100%;
+      height: auto;
+      object-fit: cover;          /* fills without distortion */
+      display: block;
+      background: #000;
+    }
+
     /* Quote */
     .quote{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.2rem; align-items:center}
     blockquote{margin:0; padding:1.2rem 1.2rem 1.2rem 1.1rem; border-left:6px solid var(--g); background:var(--panel); border-radius:0 var(--radius) var(--radius) 0}
@@ -515,7 +533,6 @@
                 <source src="images/2developmentVid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <figcaption>LED face prototype displaying a playful expression</figcaption>
             </figure>
           </div>
         </div>
