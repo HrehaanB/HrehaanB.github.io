@@ -156,6 +156,36 @@
     .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; margin-top:1rem}
     .gallery img{aspect-ratio:1/1; object-fit:cover; border-radius:12px; outline:1px solid rgba(255,255,255,.08)}
 
+    .gallery video {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 12px;
+      outline: 1px solid rgba(255,255,255,.08);
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .journey-video video {
+      width: 100%;
+      height: auto;
+      max-width: 480px;
+      border-radius: 18px;
+      object-fit: cover;
+      display: block;
+      margin-inline: auto;
+      background: #000;
+      box-shadow: var(--shadow);
+    }
+
+    .journey-video video {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      margin-inline: auto;
+    }
+
     /* Quote */
     .quote{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.2rem; align-items:center}
     blockquote{margin:0; padding:1.2rem 1.2rem 1.2rem 1.1rem; border-left:6px solid var(--g); background:var(--panel); border-radius:0 var(--radius) var(--radius) 0}
@@ -480,8 +510,8 @@
           <div class="badge" aria-hidden="true" style="background:var(--g)">02</div>
           <div> 
             <h4>Electronics & expressiveness</h4> <p>Microcontrollers, servo control, and bringing BoomBot to life</p>
-            <figure class="frame">
-              <video controls playsinline muted loop width="100%">
+            <figure class="frame journey-video">
+              <video playsinline autoplay muted loop>
                 <source src="images/2developmentVid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -540,7 +570,7 @@
         <img src="images/excitedKid.jpeg" alt="Mini BoomBot session video">
         <img src="images/kid1.jpeg" alt="Hrehaan demonstrating a simple circuit to students">
 
-        <video playsinline muted loop controls>
+        <video class="gallery-video" playsinline autoplay muted loop>
           <source src="images/sessionClip.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
