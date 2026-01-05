@@ -137,6 +137,15 @@
     .stat b{display:block; font:900 2rem/1 Nunito, Inter, sans-serif}
     .stat span{color:var(--muted)}
 
+    /* Extra stats toggle */
+    .extra-stat {
+      display: none;
+    }
+
+    .extra-stat.show {
+      display: block;
+    }
+
     /* Timeline */
     .timeline{position:relative; margin-top:2rem}
     .timeline::before{content:""; position:absolute; left:clamp(10px, 3vw, 26px); top:0; bottom:0; width:3px; background:linear-gradient(var(--b), var(--g)); opacity:.6}
@@ -522,12 +531,27 @@
     <div class="container">
       <h3 class="reveal">Impact at a glance</h3>
       <p class="reveal lede">As the project grows, so do the smiles and skills. Creating an environment of confidence and curiosity is of upmost importance.</p>
+      
       <div class="stats">
+        <!-- Always-visible stats -->
         <div class="stat reveal"><b>108+</b><span>students reached</span></div>
         <div class="stat reveal"><b>11+</b><span>community events</span></div>
         <div class="stat reveal"><b>97%</b><span>excited to build their own robot</span></div>
         <div class="stat reveal"><b>93%</b><span>confident in playing music</span></div>
+
+        <!-- Extra stats (initially hidden) -->
+        <div class="stat reveal extra-stat"><b>83%</b><span>reported increased confidence in their ability to build a robot</span></div>
+        <div class="stat reveal extra-stat"><b>94%</b><span>expressed greater interest in learning about robotics</span></div>
+        <div class="stat reveal extra-stat"><b>17% --> 76%</b><span>students’ average accuracy in identifying musical scales</span></div>
+        <div class="stat reveal extra-stat"><b>91%</b><span>wanted to continue learning an instrument</span></div>
+        <div class="stat reveal extra-stat"><b>68%</b><span>students from Title I communities</span></div>
       </div>
+
+      <!-- Toggle button -->
+      <button id="toggle-stats" class="btn alt" type="button" style="margin-top:1rem">
+        Show more impact
+      </button>
+
       <p class="small" style="margin-top:.6rem"></p>
     </div>
   </section>
@@ -748,6 +772,25 @@
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} })
     }, {threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // ==== NEW: Show more / less stats toggle ====
+    const toggleStatsBtn = document.getElementById('toggle-stats');
+    const extraStats = document.querySelectorAll('.extra-stat');
+    let statsExpanded = false;
+
+    toggleStatsBtn?.addEventListener('click', () => {
+      statsExpanded = !statsExpanded;
+
+      extraStats.forEach(stat => {
+        stat.classList.toggle('show', statsExpanded);
+        // Ensure they animate in even if observer already ran
+        if (statsExpanded) {
+          stat.classList.add('in');
+        }
+      });
+
+      toggleStatsBtn.textContent = statsExpanded ? 'Show fewer stats' : 'Show more impact';
+    });
 
     // Copy + mailto helpers
     const copyBtn = document.getElementById('copy');
