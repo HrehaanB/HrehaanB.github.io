@@ -441,6 +441,18 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .btn.alt.dev-btn{
+      background: color-mix(in srgb, var(--r) 75%, transparent); /* red backdrop */
+      border-color: color-mix(in srgb, var(--r) 55%, transparent);
+      color: var(--ink);
+    }
+
+    .btn.alt.dev-btn:hover,
+    .btn.alt.dev-btn:focus{
+      background: color-mix(in srgb, var(--r) 90%, transparent);
+      border-color: var(--r);
+    }
   </style>
 </head>
 <body>
@@ -584,7 +596,7 @@
         </div>
 
         <div class="reveal">
-          <a class="btn alt" 
+          <a class="btn alt dev-btn" 
             href="https://youtu.be/bcdXesyXxYI?si=_HI8KVeG71qpEo9E" 
             target="_blank" 
             rel="noopener">
