@@ -867,19 +867,25 @@
   </script>
 
   <script>
-  // Simple mailto link builder
-  const contactForm = document.getElementById('contact-form');
-  contactForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = encodeURIComponent(document.getElementById('name').value);
-    const email = encodeURIComponent(document.getElementById('email').value);
-    const message = encodeURIComponent(document.getElementById('message').value);
+    const contactForm = document.getElementById('contact-form');
 
-    const subject = encodeURIComponent(`BoomBot Inquiry from ${name}`);
-    const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    window.location.href = `mailto:connect.boombot@gmail.com?subject=${subject}&body=${body}`;
-  });
+      // RAW values (no encoding here)
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Build raw subject/body
+      const subject = `BoomBot Inquiry from ${name}`;
+      const body = `From: ${name} (${email})\n\n${message}`;
+
+      // Encode ONCE when inserting into the mailto URL
+      const mailto = `mailto:connect.boombot@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailto;
+    });
   </script>
 
 </body>
